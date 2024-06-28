@@ -1,116 +1,71 @@
 /*
+Implemente un programa que busque una subcadena 
+dentro de una cadena con las siguientes restricciones
+- Utilice funciones en su implementación
+- Utilice arreglo de caracteres
+- Utilice búsqueda lineal
+
+Ejemplo: 
+ENTRADA:
+Hola mundo
+mundo
+
+SALIDA: subcadena encontrada en la posicion 5
+
+*/ 
 #include <iostream>
+#include <cstring> //strlen()
+
 using namespace std;
 
-int main(){
-	 
-	//ASCII
-	char saludo1[5] = {'H', 'o', 'l', 'a','\0'};
-	 
-	char saludo2[5] = {72, 'o',108,'a',0};
 
-	cout << saludo1 <<endl;
-	cout << saludo2 << endl;
-	
-}
-*/
-	
-/*	
-#include <iostream>
-using namespace std;
-
-int main(){
-	 
-	
-	for (int i = 0; i < 127; ++i){
-		cout <<"A " << i << " le corresponde " << (char)i <<endl;
-
+//Función buscar subcadena
+int buscaSubcadena(char cadena[], char subcadena[]){
+	//usando strstr()
+	char * psub = strstr(cadena, subcadena);
+	if(psub != 0){
+		return psub - cadena;
+	}else{
+		return -1;
 	}
 }
-*/
 
+
+
+int main(){
+	
+	char cadena[50], subcadena[50];
+	
+	cout << "Ingrese la cadena: ";
+	cin.getline(cadena,50);
+	
+	cout << "Ingrese la subcadena: ";
+	cin.getline(subcadena,50);
+	
+	int resp = buscaSubcadena(cadena,subcadena);
+	
+	if(resp != -1){
+		cout << "La subcadena se encuentra en la posicion: " << resp <<endl;
+		
+	}else{
+		cout << "La subcadena no se encuentra en la cadena";
+	}
+	 
+
+	
+	
+	
+	
+	
+	return 0;
+}
 
 /*
-#include <iostream>
-using namespace std;
+Variante 1
+utilice la función en  <cstring> que permite encontrar subcadenas
 
-int main(){
-
-
-	unsigned char ch1 = 125, ch2 = 10;
-	ch1 = ch1 + ch2;
-	
-	cout <<(int)ch1 <<endl; // 135    
-	
-	cout << (char)(ch1-ch2-4) <<endl;
-		
-		return 0;
-}
+Variante 2
+Utilice la libreria <string>
 */
-
-
-	
-	
-	
-/*	
-	
-	#include <iostream>
-	#include <cstdlib> //rand() srand()
-	#include <ctime> //time()
-	
-	using namespace std;
-	
-	int main(){
-		char cadena[21];
-		int cont;
-		
-		srand(time(0));
-		for(int i = 0; i <20; ++i){
-			int n = rand() % 26 + 65; //A->65 Z->90
-			cadena[i] = n;
-		}
-		cout << cadena << endl;
-		
-		int k;
-		
-		for(int j = 65; j <91; ++j){
-			cont = 0;
-			
-			for(k = 0; k<20;++k){
-				if(cadena[k] == j){
-					cont++;
-				}
-			}
-			if(cont>0){
-				cout << "Hay " << cont << " " << (char)j <<endl;
-			}
-		}
-		
-	}
-	
-*/	
-
-	
-	
-	#include<iostream>
-	using namespace std;
-	
-	int main(){
-		char lista_estud[15][20];
-		
-		char nombres[4][10] ={"Sergio", "Patrick", "Rottger", "Roy"};
-		
-		for(int i = 0; i < 4; ++i){
-			cout << "Ingrese los nombres del alumno " << i+1 << ": ";//cin.getline(nombres[i],10);
-			cin.getline(lista_estud[i],20);//cin >>lista_estud[i];
-		}
-		
-		for(int i = 0; i < 4; ++i){
-			cout <<lista_estud[i] <<endl;; // nombres[i];
-		}
-		
-		
-	}
-	
 	
 
